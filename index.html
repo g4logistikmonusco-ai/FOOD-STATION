@@ -1,0 +1,1698 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FOOD STATION OF INDORDB XXXIX - G</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a237e;
+            --secondary-color: #2196f3;
+            --accent-red: #f44336;
+            --accent-yellow: #ff9800;
+            --accent-blue: #2196f3;
+            --accent-orange: #ff5722;
+            --light-bg: #f8f9fa;
+            --dark-bg: #121212;
+            --card-light: #ffffff;
+            --card-dark: #1e1e1e;
+            --text-light: #2c3e50;
+            --text-dark: #e0e0e0;
+            --border-light: #e0e0e0;
+            --border-dark: #424242;
+            --shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-light);
+            transition: var(--transition);
+            min-height: 100vh;
+            padding-bottom: 60px;
+            line-height: 1.6;
+        }
+
+        body.dark-mode {
+            background-color: var(--dark-bg);
+            color: var(--text-dark);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .main-header {
+            background: linear-gradient(rgba(26, 35, 126, 0.9), rgba(26, 35, 126, 0.95)), 
+                        url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            color: white;
+            padding: 40px 0;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex: 1;
+        }
+
+        .logo-icon {
+            font-size: 3rem;
+            color: #ffcc00;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+
+        .title-section {
+            flex: 2;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            font-weight: 400;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            padding: 12px 20px;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+        }
+
+        .toggle-switch {
+            width: 54px;
+            height: 28px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .toggle-switch::after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background-color: white;
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            transition: var(--transition);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .dark-mode .toggle-switch {
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .dark-mode .toggle-switch::after {
+            transform: translateX(26px);
+            background-color: #ffcc00;
+        }
+
+        /* Location Filter */
+        .location-filter {
+            margin: 40px 0 30px;
+        }
+
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+            font-weight: 600;
+        }
+
+        .dark-mode h2 {
+            color: var(--text-dark);
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 80px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-blue));
+            border-radius: 3px;
+        }
+
+        .location-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .location-card {
+            padding: 30px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 2px solid transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 180px;
+        }
+
+        .location-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: -1;
+        }
+
+        .location-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .location-card.active {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .location-card.bunia {
+            background: linear-gradient(135deg, var(--accent-red) 0%, #d32f2f 100%);
+            color: white;
+        }
+
+        .location-card.tchabi {
+            background: linear-gradient(135deg, var(--accent-yellow) 0%, #f57c00 100%);
+            color: #333;
+        }
+
+        .location-card.komanda {
+            background: linear-gradient(135deg, var(--accent-blue) 0%, #1976d2 100%);
+            color: white;
+        }
+
+        .location-card.bogoro {
+            background: linear-gradient(135deg, var(--accent-orange) 0%, #e64a19 100%);
+            color: white;
+        }
+
+        .location-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .location-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .location-desc {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        /* Summary Cards */
+        .summary-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .summary-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%);
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dark-mode .summary-card {
+            background: linear-gradient(135deg, rgba(30, 30, 30, 0.95) 0%, rgba(40, 40, 40, 0.85) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .summary-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .summary-card-title {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+
+        .dark-mode .summary-card-title {
+            color: #bbb;
+        }
+
+        .summary-card-value {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            line-height: 1.2;
+        }
+
+        .dark-mode .summary-card-value {
+            color: var(--text-dark);
+        }
+
+        /* Data Sections */
+        .data-sections {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 35px;
+            margin-top: 30px;
+        }
+
+        .data-section {
+            background-color: var(--card-light);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border-light);
+        }
+
+        .dark-mode .data-section {
+            background-color: var(--card-dark);
+            border: 1px solid var(--border-dark);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .dark-mode .section-header {
+            border-bottom: 2px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dark-mode .section-title {
+            color: var(--text-dark);
+        }
+
+        .section-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 10px;
+            border: none;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-blue));
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(33, 150, 243, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+        }
+
+        .btn-refresh {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+        }
+
+        .btn-export {
+            background: linear-gradient(135deg, #8e44ad, #9b59b6);
+            box-shadow: 0 4px 15px rgba(155, 89, 182, 0.3);
+        }
+
+        /* Tables */
+        .table-container {
+            overflow-x: auto;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            max-height: 650px;
+            overflow-y: auto;
+            border: 1px solid var(--border-light);
+            background: var(--card-light);
+        }
+
+        .dark-mode .table-container {
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border-dark);
+            background: var(--card-dark);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 1600px;
+        }
+
+        thead {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        th {
+            padding: 16px 12px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-right: 1px solid rgba(255, 255, 255, 0.15);
+            vertical-align: middle;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        th:last-child {
+            border-right: none;
+        }
+
+        .sub-header {
+            background: rgba(255, 255, 255, 0.15);
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .dark-mode tbody tr {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        tbody tr:hover {
+            background-color: rgba(33, 150, 243, 0.08);
+        }
+
+        .dark-mode tbody tr:hover {
+            background-color: rgba(33, 150, 243, 0.15);
+        }
+
+        td {
+            padding: 14px 12px;
+            font-size: 0.9rem;
+            border-right: 1px solid rgba(0, 0, 0, 0.08);
+            text-align: center;
+            vertical-align: middle;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .dark-mode td {
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-dark);
+        }
+
+        td:last-child {
+            border-right: none;
+        }
+
+        /* Highlight based on location */
+        tr[data-location="BUNIA"] td:first-child {
+            border-left: 5px solid var(--accent-red);
+            background-color: rgba(244, 67, 54, 0.05);
+        }
+
+        tr[data-location="TCHABI"] td:first-child {
+            border-left: 5px solid var(--accent-yellow);
+            background-color: rgba(255, 152, 0, 0.05);
+        }
+
+        tr[data-location="KOMANDA"] td:first-child {
+            border-left: 5px solid var(--accent-blue);
+            background-color: rgba(33, 150, 243, 0.05);
+        }
+
+        tr[data-location="BOGORO"] td:first-child {
+            border-left: 5px solid var(--accent-orange);
+            background-color: rgba(255, 87, 34, 0.05);
+        }
+
+        /* Column Group Styling */
+        .col-group-1 {
+            background-color: rgba(33, 150, 243, 0.1);
+        }
+        
+        .col-group-2 {
+            background-color: rgba(76, 175, 80, 0.1);
+        }
+        
+        .dark-mode .col-group-1 {
+            background-color: rgba(33, 150, 243, 0.25);
+        }
+        
+        .dark-mode .col-group-2 {
+            background-color: rgba(76, 175, 80, 0.25);
+        }
+
+        /* Loading State */
+        .loading {
+            text-align: center;
+            padding: 60px 30px;
+            color: var(--secondary-color);
+        }
+
+        .spinner {
+            border: 5px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 5px solid var(--secondary-color);
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        .dark-mode .spinner {
+            border: 5px solid rgba(255, 255, 255, 0.1);
+            border-top: 5px solid var(--secondary-color);
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+            color: #777;
+            font-size: 0.95rem;
+            border-top: 1px solid var(--border-light);
+            background: var(--card-light);
+        }
+
+        .dark-mode footer {
+            color: #aaa;
+            border-top: 1px solid var(--border-dark);
+            background: var(--card-dark);
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            padding: 18px 30px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: var(--transition);
+            z-index: 1000;
+            font-weight: 500;
+            max-width: 400px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .notification.error {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
+
+        .notification.warning {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+        }
+
+        /* Status Indicators */
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        .status-good {
+            background-color: #27ae60;
+            box-shadow: 0 0 8px rgba(39, 174, 96, 0.5);
+        }
+
+        .status-warning {
+            background-color: #f39c12;
+            box-shadow: 0 0 8px rgba(243, 156, 18, 0.5);
+        }
+
+        .status-critical {
+            background-color: #e74c3c;
+            box-shadow: 0 0 8px rgba(231, 76, 60, 0.5);
+        }
+
+        /* Connection Status */
+        .connection-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            padding: 5px 10px;
+            border-radius: 20px;
+            background: rgba(46, 204, 113, 0.1);
+            color: #27ae60;
+            margin-bottom: 20px;
+        }
+
+        .connection-status.disconnected {
+            background: rgba(231, 76, 60, 0.1);
+            color: #e74c3c;
+        }
+
+        .connection-status.loading {
+            background: rgba(241, 196, 15, 0.1);
+            color: #f39c12;
+        }
+
+        .connection-status .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .connection-status.connected .status-dot {
+            background-color: #27ae60;
+            box-shadow: 0 0 8px #27ae60;
+            animation: pulse 2s infinite;
+        }
+
+        .connection-status.disconnected .status-dot {
+            background-color: #e74c3c;
+            box-shadow: 0 0 8px #e74c3c;
+        }
+
+        .connection-status.loading .status-dot {
+            background-color: #f39c12;
+            box-shadow: 0 0 8px #f39c12;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        /* Mobile Optimizations */
+        @media (max-width: 1200px) {
+            h1 { font-size: 2.3rem; }
+            .logo-icon { font-size: 2.5rem; }
+            .location-name { font-size: 1.8rem; }
+        }
+
+        @media (max-width: 992px) {
+            .header-content { flex-direction: column; gap: 25px; text-align: center; }
+            .logo-container { flex-direction: column; text-align: center; }
+            .title-section { order: -1; }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .subtitle { font-size: 1rem; }
+            .location-cards { grid-template-columns: repeat(2, 1fr); }
+            .data-section { padding: 20px; }
+            .section-header { flex-direction: column; align-items: flex-start; }
+            .section-actions { width: 100%; justify-content: space-between; }
+            .summary-cards { grid-template-columns: repeat(2, 1fr); }
+            th, td { padding: 12px 8px; font-size: 0.85rem; }
+        }
+
+        @media (max-width: 576px) {
+            .location-cards, .summary-cards { grid-template-columns: 1fr; }
+            .section-actions { flex-direction: column; width: 100%; }
+            .btn { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container header-content">
+            <div class="logo-container">
+                <div class="logo-icon">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <div class="title-section">
+                    <h1>FOOD STATION OF INDORDB XXXIX - G</h1>
+                    <div class="subtitle">CRP & Stock Management Platform</div>
+                </div>
+            </div>
+            
+            <div class="theme-toggle" id="themeToggle">
+                <div class="toggle-switch"></div>
+                <span id="themeText">Dark Mode</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Location Filter -->
+        <section class="location-filter">
+            <h2>Filter by Location</h2>
+            <div class="location-cards">
+                <div class="location-card bunia active" data-location="BUNIA">
+                    <div class="location-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="location-name">BUNIA</div>
+                    <div class="location-desc">Click to view CRP and Stock data</div>
+                </div>
+                
+                <div class="location-card tchabi" data-location="TCHABI">
+                    <div class="location-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="location-name">TCHABI</div>
+                    <div class="location-desc">Click to view CRP and Stock data</div>
+                </div>
+                
+                <div class="location-card komanda" data-location="KOMANDA">
+                    <div class="location-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="location-name">KOMANDA</div>
+                    <div class="location-desc">Click to view CRP and Stock data</div>
+                </div>
+                
+                <div class="location-card bogoro" data-location="BOGORO">
+                    <div class="location-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="location-name">BOGORO</div>
+                    <div class="location-desc">Click to view CRP and Stock data</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Summary Cards -->
+        <div class="summary-cards">
+            <div class="summary-card">
+                <div class="summary-card-title"><i class="fas fa-box-open"></i> Total Items</div>
+                <div class="summary-card-value" id="totalCrpItems">0</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-card-title"><i class="fas fa-calendar-alt"></i> Active Months</div>
+                <div class="summary-card-value" id="activeMonths">0</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-card-title"><i class="fas fa-calculator"></i> Total QTY</div>
+                <div class="summary-card-value" id="totalQty">0</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-card-title"><i class="fas fa-balance-scale"></i> Avg. Sisa</div>
+                <div class="summary-card-value" id="avgSisa">0</div>
+            </div>
+        </div>
+
+        <!-- Connection Status -->
+        <div class="connection-status loading" id="connectionStatus">
+            <span class="status-dot"></span>
+            <span id="connectionText">Connecting to Google Sheets...</span>
+        </div>
+
+        <!-- Data Sections -->
+        <div class="data-sections">
+            <!-- CRP Data Section -->
+            <section class="data-section">
+                <div class="section-header">
+                    <h3 class="section-title">
+                        <i class="fas fa-table"></i> CRP Data - <span id="crpLocation">BUNIA</span>
+                        <span class="connection-status loading" id="crpConnectionStatus">
+                            <span class="status-dot"></span>
+                            <span>Loading...</span>
+                        </span>
+                    </h3>
+                    <div class="section-actions">
+                        <button class="btn btn-refresh" id="refreshCrp"><i class="fas fa-sync-alt"></i> Refresh</button>
+                        <button class="btn btn-export" id="exportCrp"><i class="fas fa-download"></i> Export</button>
+                    </div>
+                </div>
+                
+                <div class="table-container">
+                    <div id="crpLoading" class="loading">
+                        <div class="spinner"></div>
+                        <p>Loading CRP data from Google Sheets...</p>
+                    </div>
+                    <table id="crpTable">
+                        <thead>
+                            <tr>
+                                <th rowspan="2">DP</th>
+                                <th rowspan="2">MRE/CRP type</th>
+                                <th colspan="3" class="col-group-1">Basic Information</th>
+                                <th colspan="6" class="col-group-2">BISA DIGUNAKAN</th>
+                                <th rowspan="2">SISA</th>
+                                <th rowspan="2">BOX</th>
+                                <th rowspan="2">TOTAL QTY</th>
+                                <th rowspan="2">TOTAL DAYS</th>
+                            </tr>
+                            <tr class="sub-header">
+                                <th class="col-group-1">EXP Date</th>
+                                <th class="col-group-1">QTY (BOX)</th>
+                                <th class="col-group-1">Total QTY</th>
+                                <th class="col-group-2">P7</th>
+                                <th class="col-group-2">P8</th>
+                                <th class="col-group-2">P9</th>
+                                <th class="col-group-2">P10</th>
+                                <th class="col-group-2">P11</th>
+                                <th class="col-group-2">P12</th>
+                            </tr>
+                        </thead>
+                        <tbody id="crpTableBody"></tbody>
+                    </table>
+                </div>
+                <div class="data-timestamp" id="crpTimestamp">Last updated: Never</div>
+            </section>
+
+            <!-- Stock Data Section -->
+            <section class="data-section">
+                <div class="section-header">
+                    <h3 class="section-title">
+                        <i class="fas fa-warehouse"></i> Food Stock - <span id="stockLocation">BUNIA</span>
+                        <span class="connection-status loading" id="stockConnectionStatus">
+                            <span class="status-dot"></span>
+                            <span>Loading...</span>
+                        </span>
+                    </h3>
+                    <div class="section-actions">
+                        <button class="btn btn-refresh" id="refreshStock"><i class="fas fa-sync-alt"></i> Refresh</button>
+                        <button class="btn" id="addStockBtn"><i class="fas fa-plus"></i> Add Stock</button>
+                    </div>
+                </div>
+                
+                <div class="table-container">
+                    <div id="stockLoading" class="loading">
+                        <div class="spinner"></div>
+                        <p>Loading Stock data from Google Sheets...</p>
+                    </div>
+                    <table id="stockTable">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Material Type</th>
+                                <th>Location</th>
+                                <th>Received</th>
+                                <th>Outgoing</th>
+                                <th>Remaining</th>
+                                <th>Note</th>
+                            </tr>
+                        </thead>
+                        <tbody id="stockTableBody"></tbody>
+                    </table>
+                </div>
+                <div class="data-timestamp" id="stockTimestamp">Last updated: Never</div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p><i class="fas fa-database"></i> FOOD STATION OF INDORDB XXXIX - G Management Platform &copy; 2023</p>
+            <p>Data from: <a href="https://docs.google.com/spreadsheets/d/1gWjvpoCDAEwtU2whOXfjlKuhWQTGo3wwxJ8vngmg5jg/edit" target="_blank" style="color: inherit; text-decoration: underline;">Google Sheets</a></p>
+            <p>Last updated: <span id="lastUpdated">Never</span></p>
+        </div>
+    </footer>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notificationText"></span>
+    </div>
+
+    <script>
+        // ========== CONFIGURATION ==========
+        // Ganti URL ini dengan URL Web App Google Apps Script Anda setelah deploy
+        const GAS_URL = "https://script.google.com/macros/s/AKfycby.../exec";
+        
+        // ========== GLOBAL VARIABLES ==========
+        let currentLocation = "BUNIA";
+        let crpData = [];
+        let stockData = [];
+        let connectionActive = false;
+        
+        // ========== DOM ELEMENTS ==========
+        const themeToggle = document.getElementById('themeToggle');
+        const themeText = document.getElementById('themeText');
+        const locationCards = document.querySelectorAll('.location-card');
+        const crpLocationSpan = document.getElementById('crpLocation');
+        const stockLocationSpan = document.getElementById('stockLocation');
+        const crpTableBody = document.getElementById('crpTableBody');
+        const stockTableBody = document.getElementById('stockTableBody');
+        const crpLoading = document.getElementById('crpLoading');
+        const stockLoading = document.getElementById('stockLoading');
+        const refreshCrpBtn = document.getElementById('refreshCrp');
+        const refreshStockBtn = document.getElementById('refreshStock');
+        const exportCrpBtn = document.getElementById('exportCrp');
+        const addStockBtn = document.getElementById('addStockBtn');
+        const notification = document.getElementById('notification');
+        const notificationText = document.getElementById('notificationText');
+        const crpTimestamp = document.getElementById('crpTimestamp');
+        const stockTimestamp = document.getElementById('stockTimestamp');
+        const lastUpdated = document.getElementById('lastUpdated');
+        const connectionStatus = document.getElementById('connectionStatus');
+        const connectionText = document.getElementById('connectionText');
+        const crpConnectionStatus = document.getElementById('crpConnectionStatus');
+        const stockConnectionStatus = document.getElementById('stockConnectionStatus');
+        const totalCrpItems = document.getElementById('totalCrpItems');
+        const activeMonths = document.getElementById('activeMonths');
+        const totalQty = document.getElementById('totalQty');
+        const avgSisa = document.getElementById('avgSisa');
+        
+        // ========== INITIALIZATION ==========
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('FOOD STATION Platform Initializing...');
+            
+            // Load saved theme
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                enableDarkMode();
+            }
+            
+            // Setup event listeners
+            setupEventListeners();
+            
+            // Test connection and load data
+            initializeApp();
+            
+            // Update last updated time
+            updateLastUpdated();
+        });
+        
+        // ========== EVENT LISTENERS ==========
+        function setupEventListeners() {
+            // Theme toggle
+            themeToggle.addEventListener('click', toggleTheme);
+            
+            // Location cards
+            locationCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const location = this.getAttribute('data-location');
+                    switchLocation(location);
+                });
+            });
+            
+            // Refresh buttons
+            refreshCrpBtn.addEventListener('click', () => loadCrpData(true));
+            refreshStockBtn.addEventListener('click', () => loadStockData(true));
+            
+            // Export button
+            exportCrpBtn.addEventListener('click', exportCrpData);
+            
+            // Add stock button
+            addStockBtn.addEventListener('click', () => {
+                window.open('https://docs.google.com/forms/d/1OYeNl1Pd3rRQFGXS1Pvt0akVjz4gUjrO5n4zCiW9Y8E/edit', '_blank');
+            });
+        }
+        
+        // ========== APP INITIALIZATION ==========
+        async function initializeApp() {
+            console.log('Testing GAS connection...');
+            updateConnectionStatus('loading', 'Testing connection...');
+            
+            try {
+                // Test GAS connection
+                const testResult = await testGASConnection();
+                
+                if (testResult.status === 'success') {
+                    console.log('✅ GAS Connection Successful');
+                    updateConnectionStatus('connected', 'Connected to Google Sheets');
+                    
+                    // Load data
+                    await Promise.all([
+                        loadCrpData(),
+                        loadStockData()
+                    ]);
+                    
+                } else {
+                    console.error('❌ GAS Test Failed:', testResult.message);
+                    updateConnectionStatus('disconnected', 'GAS Connection Failed');
+                    showNotification('GAS connection failed. Using demo data.', 'warning');
+                    
+                    // Load demo data
+                    loadDemoData();
+                }
+                
+            } catch (error) {
+                console.error('❌ Connection Error:', error);
+                updateConnectionStatus('disconnected', 'Connection Error');
+                showNotification('Connection error. Using demo data.', 'error');
+                
+                // Load demo data
+                loadDemoData();
+            }
+        }
+        
+        // ========== GAS CONNECTION ==========
+        async function testGASConnection() {
+            try {
+                // Create a unique callback name for JSONP
+                const callbackName = 'gasCallback_' + Date.now();
+                
+                return new Promise((resolve, reject) => {
+                    // Set up the callback
+                    window[callbackName] = function(response) {
+                        delete window[callbackName];
+                        document.head.removeChild(script);
+                        resolve(response);
+                    };
+                    
+                    // Create script tag for JSONP
+                    const script = document.createElement('script');
+                    script.src = `${GAS_URL}?action=test&callback=${callbackName}`;
+                    
+                    // Error handling
+                    script.onerror = () => {
+                        delete window[callbackName];
+                        document.head.removeChild(script);
+                        resolve({
+                            status: 'error',
+                            message: 'Failed to load GAS script'
+                        });
+                    };
+                    
+                    // Add timeout
+                    setTimeout(() => {
+                        if (document.head.contains(script)) {
+                            document.head.removeChild(script);
+                            delete window[callbackName];
+                            resolve({
+                                status: 'error',
+                                message: 'Connection timeout'
+                            });
+                        }
+                    }, 10000);
+                    
+                    document.head.appendChild(script);
+                });
+                
+            } catch (error) {
+                console.error('Connection test error:', error);
+                return {
+                    status: 'error',
+                    message: error.message || 'Connection failed'
+                };
+            }
+        }
+        
+        // ========== DATA LOADING ==========
+        async function loadCrpData(forceRefresh = false) {
+            try {
+                showLoading('crp');
+                updateDataStatus('crp', 'loading', 'Loading data...');
+                
+                // Create callback for JSONP
+                const callbackName = 'crpCallback_' + Date.now();
+                
+                return new Promise((resolve, reject) => {
+                    window[callbackName] = function(response) {
+                        delete window[callbackName];
+                        document.head.removeChild(script);
+                        
+                        if (response.status === 'success') {
+                            crpData = response.data || [];
+                            console.log(`✅ Loaded ${crpData.length} CRP items`);
+                            
+                            renderCrpTable();
+                            updateSummaryCards();
+                            updateDataStatus('crp', 'connected', `${crpData.length} items`);
+                            
+                            const time = new Date(response.timestamp || new Date());
+                            crpTimestamp.textContent = `Last updated: ${time.toLocaleString()}`;
+                            
+                            hideLoading('crp');
+                            showNotification(`CRP data loaded (${crpData.length} items)`, 'success');
+                            
+                            connectionActive = true;
+                            updateConnectionStatus('connected', 'Connected to Google Sheets');
+                        } else {
+                            throw new Error(response.message || 'Failed to load CRP data');
+                        }
+                        
+                        resolve(response);
+                    };
+                    
+                    const timestamp = forceRefresh ? `&_=${Date.now()}` : '';
+                    const script = document.createElement('script');
+                    script.src = `${GAS_URL}?action=getCRP&location=${currentLocation}${timestamp}&callback=${callbackName}`;
+                    
+                    script.onerror = () => {
+                        delete window[callbackName];
+                        document.head.removeChild(script);
+                        updateDataStatus('crp', 'disconnected', 'Load failed');
+                        crpLoading.innerHTML = `<p>Error loading CRP data. Using demo data...</p>`;
+                        
+                        // Fallback to demo data
+                        setTimeout(() => {
+                            loadDemoCrpData();
+                            showNotification('Using demo CRP data', 'warning');
+                            resolve({ status: 'demo', data: crpData });
+                        }, 1000);
+                    };
+                    
+                    // Timeout
+                    setTimeout(() => {
+                        if (document.head.contains(script)) {
+                            document.head.removeChild(script);
+                            delete window[callbackName];
+                            updateDataStatus('crp', 'disconnected', 'Timeout');
+                        }
+                    }, 15000);
+                    
+                    document.head.appendChild(script);
+                });
+                
+            } catch (error) {
+                console.error('Error loading CRP:', error);
+                updateDataStatus('crp', 'disconnected', 'Load failed');
+                
+                // Fallback to demo data
+                setTimeout(() => {
+                    loadDemoCrpData();
+                    showNotification('Using demo CRP data', 'warning');
+                }, 1000);
+            }
+        }
+        
+        async function loadStockData(forceRefresh = false) {
+            try {
+                showLoading('stock');
+                updateDataStatus('stock', 'loading', 'Loading data...');
+                
+                // Create callback for JSONP
+                const callbackName = 'stockCallback_' + Date.now();
+                
+                return new Promise((resolve, reject) => {
+                    window[callbackName] = function(response) {
+                        delete window[callbackName];
+                        document.head.removeChild(script);
+                        
+                        if (response.status === 'success') {
+                            stockData = response.data || [];
+                            console.log(`✅ Loaded ${stockData.length} Stock items`);
+                            
+                            renderStockTable();
+                            updateDataStatus('stock', 'connected', `${stockData.length} items`);
+                            
+                            const time = new Date(response.timestamp || new Date());
+                            stockTimestamp.textContent = `Last updated: ${time.toLocaleString()}`;
+                            
+                            hideLoading('stock');
+                            showNotification(`Stock data loaded (${stockData.length} items)`, 'success');
+                            
+                            connectionActive = true;
+                            updateConnectionStatus('connected', 'Connected to Google Sheets');
+                        } else {
+                            throw new Error(response.message || 'Failed to load Stock data');
+                        }
+                        
+                        resolve(response);
+                    };
+                    
+                    const timestamp = forceRefresh ? `&_=${Date.now()}` : '';
+                    const script = document.createElement('script');
+                    script.src = `${GAS_URL}?action=getStock&location=${currentLocation}${timestamp}&callback=${callbackName}`;
+                    
+                    script.onerror = () => {
+                        delete window[callbackName];
+                        document.head.removeChild(script);
+                        updateDataStatus('stock', 'disconnected', 'Load failed');
+                        stockLoading.innerHTML = `<p>Error loading Stock data. Using demo data...</p>`;
+                        
+                        // Fallback to demo data
+                        setTimeout(() => {
+                            loadDemoStockData();
+                            showNotification('Using demo Stock data', 'warning');
+                            resolve({ status: 'demo', data: stockData });
+                        }, 1000);
+                    };
+                    
+                    // Timeout
+                    setTimeout(() => {
+                        if (document.head.contains(script)) {
+                            document.head.removeChild(script);
+                            delete window[callbackName];
+                            updateDataStatus('stock', 'disconnected', 'Timeout');
+                        }
+                    }, 15000);
+                    
+                    document.head.appendChild(script);
+                });
+                
+            } catch (error) {
+                console.error('Error loading Stock:', error);
+                updateDataStatus('stock', 'disconnected', 'Load failed');
+                
+                // Fallback to demo data
+                setTimeout(() => {
+                    loadDemoStockData();
+                    showNotification('Using demo Stock data', 'warning');
+                }, 1000);
+            }
+        }
+        
+        // ========== DEMO DATA (FALLBACK) ==========
+        function loadDemoData() {
+            console.log('Loading demo data...');
+            loadDemoCrpData();
+            loadDemoStockData();
+            showNotification('Using demo data. Check GAS connection.', 'warning');
+        }
+        
+        function loadDemoCrpData() {
+            crpData = generateDemoCrpData(currentLocation);
+            renderCrpTable();
+            updateSummaryCards();
+            updateDataStatus('crp', 'disconnected', 'Demo Data');
+            hideLoading('crp');
+            crpTimestamp.textContent = 'Last updated: Demo Data';
+        }
+        
+        function loadDemoStockData() {
+            stockData = generateDemoStockData(currentLocation);
+            renderStockTable();
+            updateDataStatus('stock', 'disconnected', 'Demo Data');
+            hideLoading('stock');
+            stockTimestamp.textContent = 'Last updated: Demo Data';
+        }
+        
+        // ========== RENDER FUNCTIONS ==========
+        function renderCrpTable() {
+            crpTableBody.innerHTML = '';
+            
+            if (crpData.length === 0) {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td colspan="15" style="text-align: center; padding: 40px; color: #666; font-style: italic;">
+                        <i class="fas fa-database" style="font-size: 2rem; margin-bottom: 15px; display: block; opacity: 0.5;"></i>
+                        No CRP data available for ${currentLocation}
+                    </td>
+                `;
+                crpTableBody.appendChild(row);
+                return;
+            }
+            
+            crpData.forEach((item) => {
+                const row = document.createElement('tr');
+                const location = item.Location || currentLocation;
+                row.setAttribute('data-location', location);
+                
+                const formatNumber = (value) => {
+                    if (value === null || value === undefined || value === '') return '';
+                    const num = parseFloat(value);
+                    return isNaN(num) ? value : num.toLocaleString();
+                };
+                
+                row.innerHTML = `
+                    <td><strong>${item.DP || ''}</strong></td>
+                    <td style="text-align: left; min-width: 200px;">${item['MRE/CRP type'] || ''}</td>
+                    <td>${item['EXP Date'] || ''}</td>
+                    <td><strong>${formatNumber(item['QTY (BOX)'])}</strong></td>
+                    <td><strong>${formatNumber(item['Total QTY'])}</strong></td>
+                    <td>${formatNumber(item.P7)}</td>
+                    <td>${formatNumber(item.P8)}</td>
+                    <td>${formatNumber(item.P9)}</td>
+                    <td>${formatNumber(item.P10)}</td>
+                    <td>${formatNumber(item.P11)}</td>
+                    <td>${formatNumber(item.P12)}</td>
+                    <td>
+                        <span class="status-indicator ${getSisaStatus(item.SISA)}"></span>
+                        <strong>${formatNumber(item.SISA)}</strong>
+                    </td>
+                    <td>${formatNumber(item.BOX)}</td>
+                    <td><strong>${formatNumber(item['TOTAL QTY'])}</strong></td>
+                    <td>${formatNumber(item['TOTAL DAYS'])}</td>
+                `;
+                crpTableBody.appendChild(row);
+            });
+        }
+        
+        function renderStockTable() {
+            stockTableBody.innerHTML = '';
+            
+            if (stockData.length === 0) {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td colspan="7" style="text-align: center; padding: 40px; color: #666; font-style: italic;">
+                        <i class="fas fa-boxes" style="font-size: 2rem; margin-bottom: 15px; display: block; opacity: 0.5;"></i>
+                        No Stock data available for ${currentLocation}
+                    </td>
+                `;
+                stockTableBody.appendChild(row);
+                return;
+            }
+            
+            stockData.forEach((item) => {
+                const row = document.createElement('tr');
+                
+                const remainingNum = parseFloat(item.Remaining) || 0;
+                let remainingClass = '';
+                if (remainingNum < 10) {
+                    remainingClass = 'style="color: #e74c3c; font-weight: bold;"';
+                } else if (remainingNum < 30) {
+                    remainingClass = 'style="color: #f39c12; font-weight: bold;"';
+                }
+                
+                row.innerHTML = `
+                    <td>${item.Date || ''}</td>
+                    <td><strong>${item['Material Type'] || ''}</strong></td>
+                    <td><span class="status-indicator ${getRemainingStatus(item.Remaining)}"></span> ${item.Location || currentLocation}</td>
+                    <td><strong>${item.Received || ''}</strong></td>
+                    <td>${item.Outgoing || ''}</td>
+                    <td ${remainingClass}><strong>${item.Remaining || ''}</strong></td>
+                    <td style="text-align: left; max-width: 200px;">${item.Note || ''}</td>
+                `;
+                stockTableBody.appendChild(row);
+            });
+        }
+        
+        // ========== HELPER FUNCTIONS ==========
+        function getSisaStatus(sisa) {
+            const value = parseFloat(sisa) || 0;
+            if (value > 500) return 'status-good';
+            if (value > 100) return 'status-warning';
+            return 'status-critical';
+        }
+        
+        function getRemainingStatus(remaining) {
+            const value = parseFloat(remaining) || 0;
+            if (value > 50) return 'status-good';
+            if (value > 20) return 'status-warning';
+            return 'status-critical';
+        }
+        
+        function switchLocation(location) {
+            currentLocation = location;
+            setActiveLocation(location);
+            crpLocationSpan.textContent = location;
+            stockLocationSpan.textContent = location;
+            
+            if (connectionActive) {
+                loadCrpData();
+                loadStockData();
+            } else {
+                loadDemoCrpData();
+                loadDemoStockData();
+            }
+        }
+        
+        function setActiveLocation(location) {
+            locationCards.forEach(card => {
+                card.classList.remove('active');
+                if (card.getAttribute('data-location') === location) {
+                    card.classList.add('active');
+                }
+            });
+        }
+        
+        // ========== THEME FUNCTIONS ==========
+        function toggleTheme() {
+            if (document.body.classList.contains('dark-mode')) {
+                disableDarkMode();
+            } else {
+                enableDarkMode();
+            }
+        }
+        
+        function enableDarkMode() {
+            document.body.classList.add('dark-mode');
+            themeText.textContent = 'Light Mode';
+            localStorage.setItem('theme', 'dark');
+        }
+        
+        function disableDarkMode() {
+            document.body.classList.remove('dark-mode');
+            themeText.textContent = 'Dark Mode';
+            localStorage.setItem('theme', 'light');
+        }
+        
+        // ========== LOADING STATES ==========
+        function showLoading(type) {
+            if (type === 'crp') {
+                crpLoading.style.display = 'block';
+                document.getElementById('crpTable').style.display = 'none';
+            } else if (type === 'stock') {
+                stockLoading.style.display = 'block';
+                document.getElementById('stockTable').style.display = 'none';
+            }
+        }
+        
+        function hideLoading(type) {
+            if (type === 'crp') {
+                crpLoading.style.display = 'none';
+                document.getElementById('crpTable').style.display = 'table';
+            } else if (type === 'stock') {
+                stockLoading.style.display = 'none';
+                document.getElementById('stockTable').style.display = 'table';
+            }
+        }
+        
+        // ========== CONNECTION STATUS ==========
+        function updateConnectionStatus(status, message) {
+            connectionStatus.className = `connection-status ${status}`;
+            connectionText.textContent = message;
+        }
+        
+        function updateDataStatus(type, status, message) {
+            const element = type === 'crp' ? crpConnectionStatus : stockConnectionStatus;
+            const textElement = element.querySelector('span:last-child');
+            const dotElement = element.querySelector('.status-dot');
+            
+            element.className = `connection-status ${status}`;
+            textElement.textContent = message;
+            dotElement.className = 'status-dot';
+        }
+        
+        // ========== SUMMARY CARDS ==========
+        function updateSummaryCards() {
+            if (crpData.length === 0) {
+                totalCrpItems.textContent = '0';
+                activeMonths.textContent = '0';
+                totalQty.textContent = '0';
+                avgSisa.textContent = '0';
+                return;
+            }
+            
+            // Total CRP Items
+            totalCrpItems.textContent = crpData.length;
+            
+            // Count unique months from EXP Date
+            const months = new Set();
+            crpData.forEach(item => {
+                const expDate = item['EXP Date'] || '';
+                if (expDate) {
+                    const month = String(expDate).split('-')[0];
+                    if (month) months.add(month);
+                }
+            });
+            activeMonths.textContent = months.size;
+            
+            // Calculate total QTY
+            let totalQtyValue = 0;
+            crpData.forEach(item => {
+                const qty = parseFloat(item['Total QTY'] || item['QTY (BOX)'] || 0);
+                totalQtyValue += isNaN(qty) ? 0 : qty;
+            });
+            totalQty.textContent = Math.round(totalQtyValue).toLocaleString();
+            
+            // Calculate average sisa
+            let totalSisa = 0;
+            crpData.forEach(item => {
+                const sisa = parseFloat(item.SISA || 0);
+                totalSisa += isNaN(sisa) ? 0 : sisa;
+            });
+            const avgSisaValue = crpData.length > 0 ? totalSisa / crpData.length : 0;
+            avgSisa.textContent = Math.round(avgSisaValue).toLocaleString();
+        }
+        
+        // ========== NOTIFICATION ==========
+        function showNotification(message, type = 'success') {
+            const icon = type === 'error' ? 'fa-exclamation-circle' : 
+                        type === 'warning' ? 'fa-exclamation-triangle' : 'fa-check-circle';
+            
+            notification.innerHTML = `<i class="fas ${icon}"></i><span>${message}</span>`;
+            notification.className = 'notification';
+            
+            if (type === 'error') {
+                notification.classList.add('error');
+            } else if (type === 'warning') {
+                notification.classList.add('warning');
+            }
+            
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 4000);
+        }
+        
+        // ========== LAST UPDATED ==========
+        function updateLastUpdated() {
+            const now = new Date();
+            lastUpdated.textContent = now.toLocaleString();
+            
+            // Update every minute
+            setInterval(() => {
+                const now = new Date();
+                lastUpdated.textContent = now.toLocaleString();
+            }, 60000);
+        }
+        
+        // ========== EXPORT FUNCTION ==========
+        function exportCrpData() {
+            if (crpData.length === 0) {
+                showNotification('No data to export', 'error');
+                return;
+            }
+            
+            // Prepare CSV content
+            const headers = [
+                'DP', 'MRE/CRP type', 'EXP Date', 'QTY (BOX)', 'Total QTY',
+                'P7', 'P8', 'P9', 'P10', 'P11', 'P12', 'SISA', 'BOX', 'TOTAL QTY', 'TOTAL DAYS'
+            ];
+            
+            const csvRows = [];
+            csvRows.push(headers.join(','));
+            
+            // Add data rows
+            crpData.forEach(item => {
+                const row = [
+                    item.DP || '',
+                    `"${item['MRE/CRP type'] || ''}"`,
+                    item['EXP Date'] || '',
+                    item['QTY (BOX)'] || '',
+                    item['Total QTY'] || '',
+                    item.P7 || '',
+                    item.P8 || '',
+                    item.P9 || '',
+                    item.P10 || '',
+                    item.P11 || '',
+                    item.P12 || '',
+                    item.SISA || '',
+                    item.BOX || '',
+                    item['TOTAL QTY'] || '',
+                    item['TOTAL DAYS'] || ''
+                ];
+                csvRows.push(row.join(','));
+            });
+            
+            // Create CSV content
+            const csvContent = csvRows.join('\n');
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.setAttribute('href', url);
+            link.setAttribute('download', `CRP_${currentLocation}_${new Date().toISOString().slice(0,10)}.csv`);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            showNotification(`Exported ${crpData.length} CRP items`, 'success');
+        }
+        
+        // ========== DEMO DATA GENERATORS ==========
+        function generateDemoCrpData(location) {
+            const mreTypes = [
+                'MRE Type A - High Energy',
+                'MRE Type B - Standard',
+                'MRE Type C - Vegetarian',
+                'MRE Type D - Emergency',
+                'MRE Type E - Special Diet',
+                'MRE Type F - Cold Weather'
+            ];
+            
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'];
+            
+            const data = [];
+            const itemCount = Math.floor(Math.random() * 4) + 5;
+            
+            for (let i = 1; i <= itemCount; i++) {
+                const qtyBox = Math.floor(Math.random() * 30) + 5;
+                const totalQty = qtyBox * 10;
+                const used = Math.floor(Math.random() * totalQty * 0.7);
+                const sisa = totalQty - used;
+                
+                data.push({
+                    DP: `${location.substring(0, 3)}-${String(i).padStart(3, '0')}`,
+                    'MRE/CRP type': mreTypes[Math.floor(Math.random() * mreTypes.length)],
+                    'EXP Date': `${months[Math.floor(Math.random() * months.length)]}-26`,
+                    'QTY (BOX)': qtyBox.toString(),
+                    'Total QTY': totalQty.toString(),
+                    P7: Math.floor(Math.random() * 20).toString(),
+                    P8: Math.floor(Math.random() * 15).toString(),
+                    P9: Math.floor(Math.random() * 10).toString(),
+                    P10: Math.floor(Math.random() * 8).toString(),
+                    P11: Math.floor(Math.random() * 5).toString(),
+                    P12: Math.floor(Math.random() * 5).toString(),
+                    SISA: sisa.toString(),
+                    BOX: Math.floor(qtyBox * 0.8).toString(),
+                    'TOTAL QTY': Math.floor(totalQty * 0.6).toString(),
+                    'TOTAL DAYS': Math.floor(Math.random() * 90 + 10).toString(),
+                    Location: location
+                });
+            }
+            
+            return data;
+        }
+        
+        function generateDemoStockData(location) {
+            const materialTypes = [
+                "Rice", "Beans", "Maize", "Vegetable Oil", "Salt", 
+                "Sugar", "Wheat Flour", "Canned Fish", "Pasta", "Lentils",
+                "Tea", "Coffee", "Milk Powder", "Biscuits", "Chocolate"
+            ];
+            
+            const data = [];
+            const today = new Date();
+            const itemCount = Math.floor(Math.random() * 5) + 8;
+            
+            for (let i = 0; i < itemCount; i++) {
+                const date = new Date(today);
+                date.setDate(date.getDate() - i);
+                
+                const materialType = materialTypes[Math.floor(Math.random() * materialTypes.length)];
+                const received = Math.floor(Math.random() * 100) + 20;
+                const outgoing = Math.floor(Math.random() * 80) + 10;
+                const remaining = Math.max(0, received - outgoing);
+                
+                let note = "Good stock";
+                if (remaining < 10) note = "⚠️ Low stock, need replenishment";
+                else if (remaining < 30) note = "Moderate stock";
+                
+                data.push({
+                    Date: date.toLocaleDateString('en-US'),
+                    'Material Type': materialType,
+                    Location: location,
+                    Received: received.toString(),
+                    Outgoing: outgoing.toString(),
+                    Remaining: remaining.toString(),
+                    Note: note
+                });
+            }
+            
+            return data;
+        }
+        
+        // ========== AUTO REFRESH ==========
+        // Auto-refresh data every 5 minutes if connected
+        setInterval(() => {
+            if (connectionActive) {
+                console.log('Auto-refreshing data...');
+                loadCrpData();
+                loadStockData();
+            }
+        }, 300000); // 5 minutes
+        
+        console.log('FOOD STATION Platform Initialized');
+    </script>
+</body>
+</html>
